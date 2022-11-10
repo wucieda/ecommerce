@@ -7,13 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public interface DiscountRepository extends JpaRepository<Discount, Long> {
 
     List<Discount> findByProduct(Product product);
-    //List<Discount> findByProductAnd(Product product);
 
     @Query("select a from Discount a " +
             "where a.product = :product " +

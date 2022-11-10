@@ -47,7 +47,7 @@ public class DemoApplication implements CommandLineRunner {
         product2.setProductDescription("pantalon negro");
 
         Discount discount1 = new Discount();
-        discount1.setStartDate(LocalDateTime.now());
+        discount1.setStartDate(LocalDateTime.now().minusDays(2));
         LocalDateTime endDate1 = LocalDateTime.now().plusDays(1);
         discount1.setEndDate(endDate1);
         discount1.setDiscountValue(1.0);
@@ -55,7 +55,7 @@ public class DemoApplication implements CommandLineRunner {
 
         Discount discount2 = new Discount();
         discount2.setStartDate(LocalDateTime.now().minusDays(3));
-        LocalDateTime endDate2 = LocalDateTime.now().minusDays(2);
+        LocalDateTime endDate2 = LocalDateTime.now().plusDays(2);
         discount2.setEndDate(endDate2);
         discount2.setDiscountValue(1.0);
         discount2.setPriority(1);
