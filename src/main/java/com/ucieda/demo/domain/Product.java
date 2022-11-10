@@ -1,5 +1,6 @@
 package com.ucieda.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,8 +18,9 @@ public class Product {
     private String productDescription;
 
     private Integer unitInStock;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "brandId")
+    @JsonBackReference
     private Brand brand; //FK
 
 }
