@@ -15,16 +15,15 @@ public class Price {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private Long productId; //FK
     private Double basePrice;
 
     private Date createDate;
     private Date expiryDate;
     private Boolean inActive;
 
-//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "productId")
-//    @JsonBackReference
-//    private Product product; //FK
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "productId")
+    @JsonBackReference
+    private Product product; //FK
 
 }

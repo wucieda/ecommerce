@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,6 +34,24 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JsonManagedReference
     private List<Discount> discounts;
+
+    @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JsonManagedReference
+    private List<Price> prices;
+
+    public void addDiscount(Discount discount){
+        if(discounts==null) discounts = new ArrayList<>();
+        discounts.add(discount);
+        discount.setProduct(this);
+
+    }
+
+    public void addPrice(Price price){
+        if(prices==null) prices = new ArrayList<>();
+        prices.add(price);
+        price.setProduct(this);
+
+    }
 
 
 }

@@ -43,10 +43,21 @@ public class DemoApplication implements CommandLineRunner {
         product2.setProductName("pantalon");
         product2.setProductDescription("pantalon negro");
 
-        Discount discount = new Discount();
-        discount.setStartDate(new Date());
-        discount.setEndDate(new Date());
-        discount.setDiscountValue(1.0);
+        Discount discount1 = new Discount();
+        discount1.setStartDate(new Date());
+        discount1.setEndDate(new Date());
+        discount1.setDiscountValue(1.0);
+        discount1.setDiscountPriority(0);
+
+        Discount discount2 = new Discount();
+        discount2.setStartDate(new Date());
+        discount2.setEndDate(new Date());
+        discount2.setDiscountValue(1.0);
+        discount2.setDiscountPriority(1);
+
+        //agregar descuento a producto
+        product1.addDiscount(discount1);
+        product1.addDiscount(discount2);
 
 
         //agregar productos a marca
@@ -54,8 +65,8 @@ public class DemoApplication implements CommandLineRunner {
         brand1.addProduct(product2);
 
         //guardar cliente, productos en la db
-        productRepository.save(product1);
-        productRepository.save(product2);
+        //productRepository.save(product1);
+        //productRepository.save(product2);
         brandRepository.save(brand1);
     }
 }

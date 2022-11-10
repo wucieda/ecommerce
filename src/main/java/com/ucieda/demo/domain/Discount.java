@@ -16,7 +16,6 @@ public class Discount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private Long productId; //FK
     private Double discountValue;
     private String currency; //discount_unit
     private Date startDate;
@@ -30,7 +29,7 @@ public class Discount {
     private Date createdDate;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "productId", insertable = false, updatable = false)
+    @JoinColumn(name = "productId")
     @JsonBackReference
     private Product product; //FK
 
