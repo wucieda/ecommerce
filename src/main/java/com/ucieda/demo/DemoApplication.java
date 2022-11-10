@@ -81,8 +81,6 @@ public class DemoApplication implements CommandLineRunner {
         brand1.addProduct(product2);
 
         //guardar cliente, productos en la db
-        productRepository.save(product1);
-        productRepository.save(product2);
         brandRepository.save(brand1);
     }
 }

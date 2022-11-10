@@ -7,13 +7,10 @@ import com.ucieda.demo.service.BrandService;
 import com.ucieda.demo.service.DiscountService;
 import com.ucieda.demo.service.ProductService;
 import lombok.AllArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -35,9 +32,8 @@ public class ProductController {
     }
 
     @GetMapping(value = "/findDiscounts")
-    public List<Discount> findDiscounts(@RequestParam @DateTimeFormat(pattern="MM/dd/yyyy") Date discountApplyDate,
-                                        @RequestParam Long productId,
+    public List<Discount> findDiscounts(@RequestParam Long productId,
                                         @RequestParam Long brandId) {
-        return discountService.discountList();
+        return discountService.discountList(brandId, productId);
     }
 }
