@@ -7,6 +7,8 @@ import com.ucieda.demo.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,7 +23,7 @@ public class DiscountService {
         // encontrar un producto dado un id y dado id de la marca
        Product productSelected = productRepository.findProduct(productId, brandId);
         //del producto filtrar de la lista de descuentos los
-        return discountRepository.findByProduct(productSelected);
+        return discountRepository.findDiscount(productSelected, LocalDateTime.now());
         //esten en el rango de la fecha de entrada
 
     }

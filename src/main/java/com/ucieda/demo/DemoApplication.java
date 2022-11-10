@@ -11,6 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @SpringBootApplication
@@ -45,25 +47,24 @@ public class DemoApplication implements CommandLineRunner {
         product2.setProductDescription("pantalon negro");
 
         Discount discount1 = new Discount();
-        discount1.setStartDate(new Date());
-        discount1.setEndDate(new Date());
+        discount1.setStartDate(LocalDateTime.now());
+        LocalDateTime endDate1 = LocalDateTime.now().plusDays(1);
+        discount1.setEndDate(endDate1);
         discount1.setDiscountValue(1.0);
-        discount1.setDiscountPriority(0);
+        discount1.setPriority(0);
 
         Discount discount2 = new Discount();
-        discount2.setStartDate(new Date());
-        discount2.setEndDate(new Date());
+        discount2.setStartDate(LocalDateTime.now().minusDays(3));
+        LocalDateTime endDate2 = LocalDateTime.now().minusDays(2);
+        discount2.setEndDate(endDate2);
         discount2.setDiscountValue(1.0);
-        discount2.setDiscountPriority(1);
-
+        discount2.setPriority(1);
 
         Price price1 = new Price();
         price1.setBasePrice(10.00);
-        price1.setInActive(true);
 
         Price price2 = new Price();
         price2.setBasePrice(15.00);
-        price2.setInActive(false);
 
         //agregar precios a producto
         product1.addPrice(price1);

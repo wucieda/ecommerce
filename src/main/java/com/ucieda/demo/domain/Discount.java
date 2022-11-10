@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -17,16 +18,9 @@ public class Discount {
     @Column(name = "id", nullable = false)
     private Long id;
     private Double discountValue;
-    private String currency; //discount_unit
-    private Date startDate;
-    private Date endDate;
-    private Integer discountPriority;
-
-    private String couponCode;
-    private Integer minimumOrderValue;
-    private Integer maximumOrderValue;
-
-    private Date createdDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+    private Integer priority;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "productId")

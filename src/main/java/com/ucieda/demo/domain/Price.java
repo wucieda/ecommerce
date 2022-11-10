@@ -16,11 +16,7 @@ public class Price {
     @Column(name = "id", nullable = false)
     private Long id;
     private Double basePrice;
-
-    private Date createDate;
-
-    private Date expiryDate;
-    private Boolean inActive;
+    private String currency;
 
     @OneToOne
     @JoinColumn(name = "productId")

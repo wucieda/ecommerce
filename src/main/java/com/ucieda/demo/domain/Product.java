@@ -20,7 +20,6 @@ public class Product {
     private String productName;
     private String productDescription;
 
-    private Integer unitInStock;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "brandId")
     @JsonBackReference
