@@ -26,31 +26,23 @@ public class Product {
     @JsonBackReference
     private Brand brand; //FK
 
-
-//    @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-//    @JsonManagedReference
-//    private List<Price> prices;
-
     @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JsonManagedReference
     private List<Discount> discounts;
 
-    @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<Price> prices;
+    private Price price;
 
     public void addDiscount(Discount discount){
         if(discounts==null) discounts = new ArrayList<>();
         discounts.add(discount);
         discount.setProduct(this);
-
     }
 
     public void addPrice(Price price){
-        if(prices==null) prices = new ArrayList<>();
-        prices.add(price);
+        if(this.price==null) this.price = price;
         price.setProduct(this);
-
     }
 
 

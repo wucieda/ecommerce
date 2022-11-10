@@ -18,10 +18,11 @@ public class Price {
     private Double basePrice;
 
     private Date createDate;
+
     private Date expiryDate;
     private Boolean inActive;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "productId")
     @JsonBackReference
     private Product product; //FK

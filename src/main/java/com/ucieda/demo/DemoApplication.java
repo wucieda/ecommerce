@@ -2,6 +2,7 @@ package com.ucieda.demo;
 
 import com.ucieda.demo.domain.Brand;
 import com.ucieda.demo.domain.Discount;
+import com.ucieda.demo.domain.Price;
 import com.ucieda.demo.domain.Product;
 import com.ucieda.demo.repository.BrandRepository;
 import com.ucieda.demo.repository.ProductRepository;
@@ -55,6 +56,21 @@ public class DemoApplication implements CommandLineRunner {
         discount2.setDiscountValue(1.0);
         discount2.setDiscountPriority(1);
 
+
+        Price price1 = new Price();
+        price1.setBasePrice(10.00);
+        price1.setInActive(true);
+
+        Price price2 = new Price();
+        price2.setBasePrice(15.00);
+        price2.setInActive(false);
+
+        //agregar precios a producto
+        product1.addPrice(price1);
+
+        product2.addPrice(price2);
+
+
         //agregar descuento a producto
         product1.addDiscount(discount1);
         product1.addDiscount(discount2);
@@ -65,8 +81,8 @@ public class DemoApplication implements CommandLineRunner {
         brand1.addProduct(product2);
 
         //guardar cliente, productos en la db
-        //productRepository.save(product1);
-        //productRepository.save(product2);
+        productRepository.save(product1);
+        productRepository.save(product2);
         brandRepository.save(brand1);
     }
 }
