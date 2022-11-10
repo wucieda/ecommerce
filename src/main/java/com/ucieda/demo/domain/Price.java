@@ -1,5 +1,6 @@
 package com.ucieda.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +21,10 @@ public class Price {
     private Date createDate;
     private Date expiryDate;
     private Boolean inActive;
+
+//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "productId")
+//    @JsonBackReference
+//    private Product product; //FK
 
 }

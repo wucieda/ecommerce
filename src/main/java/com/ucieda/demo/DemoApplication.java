@@ -1,6 +1,7 @@
 package com.ucieda.demo;
 
 import com.ucieda.demo.domain.Brand;
+import com.ucieda.demo.domain.Discount;
 import com.ucieda.demo.domain.Product;
 import com.ucieda.demo.repository.BrandRepository;
 import com.ucieda.demo.repository.ProductRepository;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.Date;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -39,6 +42,12 @@ public class DemoApplication implements CommandLineRunner {
         Product product2 = new Product();
         product2.setProductName("pantalon");
         product2.setProductDescription("pantalon negro");
+
+        Discount discount = new Discount();
+        discount.setStartDate(new Date());
+        discount.setEndDate(new Date());
+        discount.setDiscountValue(1.0);
+
 
         //agregar productos a marca
         brand1.addProduct(product1);

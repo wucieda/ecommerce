@@ -1,5 +1,6 @@
 package com.ucieda.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,8 +29,11 @@ public class Discount {
 
     private Date createdDate;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "productId", insertable = false, updatable = false)
+    @JsonBackReference
+    private Product product; //FK
 
 }
 
-//https://docs.tibco.com/pub/af/4.0.0/doc/html/GUID-A8B10C5C-7F70-4CBF-AE53-C2A084D1FD4D.html
 
