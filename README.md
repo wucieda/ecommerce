@@ -1,6 +1,6 @@
 # ecommerce
 
-/*
+
 -          Test 1: petición a las 10:00 del día 14 del producto 35455   para la brand 1 (ZARA)
 http://localhost:8080/findDiscounts?applyDate=2020-06-14T10%3A00%3A00&productId=1&brandId=1
 
@@ -15,5 +15,4 @@ http://localhost:8080/findDiscounts?applyDate=2020-06-15T10%3A00%3A00&productId=
 
 -          Test 5: petición a las 21:00 del día 16 del producto 35455   para la brand 1 (ZARA)
 http://localhost:8080/findDiscounts?applyDate=2020-06-16T21%3A00%3A00&productId=1&brandId=1
-*
-* */
+
