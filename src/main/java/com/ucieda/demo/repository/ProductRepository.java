@@ -5,10 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Optional;
+
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("SELECT u FROM Product u WHERE u.id = :id and u.brand.id = :brandId")
     Product findProduct(@Param("id") Long id,
                         @Param("brandId") Long brandId);
+
+    Optional<Product> findByName(String name);
 
 }

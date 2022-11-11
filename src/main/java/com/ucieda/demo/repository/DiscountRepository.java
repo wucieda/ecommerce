@@ -15,10 +15,10 @@ public interface DiscountRepository extends JpaRepository<Discount, Long> {
 
     @Query("select a from Discount a " +
             "where a.product = :product " +
-            "and a.startDate <= :applicationDateTime " +
-            "and a.endDate >= :applicationDateTime " +
+            "and a.startDate <= :applyDate " +
+            "and a.endDate >= :applyDate " +
             "order by a.priority asc")
     List<Discount> findDiscount(
             @Param("product") Product product,
-            @Param("applicationDateTime") LocalDateTime applicationDateTime);
+            @Param("applyDate") LocalDateTime applyDate);
 }
