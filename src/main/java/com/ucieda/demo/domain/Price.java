@@ -1,5 +1,6 @@
 package com.ucieda.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,11 +15,12 @@ public class Price {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private Long productId; //FK
     private Double basePrice;
+    private String currency;
 
-    private Date createDate;
-    private Date expiryDate;
-    private Boolean inActive;
+    @OneToOne
+    @JoinColumn(name = "productId")
+    @JsonBackReference
+    private Product product; //FK
 
 }

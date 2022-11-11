@@ -1,12 +1,17 @@
 package com.ucieda.demo.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Getter
 @Setter
@@ -15,21 +20,16 @@ public class Discount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private Long productId; //FK
     private Double discountValue;
-    private String currency; //discount_unit
-    private Date startDate;
-    private Date endDate;
-    private Integer discountPriority;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+    private Integer priority;
 
-    private String couponCode;
-    private Integer minimumOrderValue;
-    private Integer maximumOrderValue;
-
-    private Date createdDate;
-
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "productId")
+    @JsonBackReference
+    private Product product; //FK
 
 }
 
-//https://docs.tibco.com/pub/af/4.0.0/doc/html/GUID-A8B10C5C-7F70-4CBF-AE53-C2A084D1FD4D.html
 
